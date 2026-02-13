@@ -1,0 +1,40 @@
+<section class="py-32 bg-slate-900 text-white relative overflow-hidden flex flex-col items-center justify-center">
+  <!-- Dynamic Background -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-900 opacity-90"></div>
+    <div
+      class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none">
+    </div>
+    <div
+      class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-[150px] pointer-events-none">
+    </div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-col items-center text-center max-w-5xl mx-auto space-y-24">
+
+      <!-- Vision -->
+      <div class="group" data-aos="fade-up">
+        <span
+          class="inline-block text-amber-500 font-bold tracking-[0.3em] text-xs uppercase mb-6 opacity-70 border-b border-amber-500/20 pb-2">
+          Our Vision
+        </span>
+        <h2 class="text-4xl md:text-6xl font-black leading-tight tracking-tight text-white drop-shadow-lg">
+          {{ data.vision.statement }}
+        </h2>
+      </div>
+
+      <!-- Mission -->
+      <div class="group" data-aos="fade-up" data-aos-delay="100">
+        <span
+          class="inline-block text-blue-400 font-bold tracking-[0.3em] text-xs uppercase mb-6 opacity-70 border-b border-blue-400/20 pb-2">
+          Our Mission
+        </span>
+        <h3 class="text-2xl md:text-4xl font-bold leading-normal text-gray-200 tracking-tight">
+          {{ data.mission.statement }}
+        </h3>
+      </div>
+
+    </div>
+  </div>
+</section>

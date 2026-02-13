@@ -1,0 +1,125 @@
+<section class="py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-16 text-primary" data-aos="fade-up">Academic Programs</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-7xl mx-auto">
+      <div *ngFor="let program of programs; let i = index"
+        class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden flex flex-col h-full"
+        [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 150">
+
+        <!-- Header -->
+        <div class="bg-slate-900 p-8 text-white relative overflow-hidden">
+          <div
+            class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+          </div>
+
+          <div class="relative z-10">
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
+                {{ program.link ? 'Degree' : 'Certificate' }}
+              </span>
+              <span class="flex items-center text-sm font-medium text-gray-300 bg-white/10 px-3 py-1 rounded-full">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+                {{ program.duration }}
+              </span>
+            </div>
+
+            <h3 class="text-2xl font-bold leading-tight mb-2">{{ program.title }}</h3>
+            <p class="text-gray-400 text-sm font-light">{{ program.description }}</p>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="p-8 flex-grow flex flex-col">
+          <!-- Show courses for certificate programs -->
+          <div class="mb-8" *ngIf="program.courses.length > 0">
+            <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <span class="w-4 h-[1px] bg-gray-300"></span>
+              Curriculum Layout
+            </h4>
+
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let course of program.courses"
+                class="inline-block bg-gray-50 border border-gray-200 text-gray-700 px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-100 hover:border-gray-300 transition-colors cursor-default">
+                {{ course }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Show contact message for degree programs -->
+          <div class="mb-8 flex-grow flex items-center" *ngIf="program.courses.length === 0">
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Contact the school for more details about this program, including curriculum, enrollment, and
+              requirements.
+            </p>
+          </div>
+
+          <div class="mt-auto pt-6 border-t border-gray-50 flex justify-between items-center">
+            <span class="text-sm font-bold text-primary">In-Person &amp; Online</span>
+            <button (click)="openProgramDetails(program)"
+              class="text-amber-600 font-bold text-sm tracking-wide hover:text-amber-700 flex items-center gap-1 group">
+              {{ program.link ? 'Contact School' : 'View Details' }}
+              <span class="inline-block transform transition-transform group-hover:translate-x-1">→</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Program Details Modal -->
+<div *ngIf="isModalOpen && selectedProgram" class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+  (click)="closeModal()">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+  <!-- Modal Content -->
+  <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden animate-fade-in"
+    (click)="$event.stopPropagation()">
+
+    <!-- Modal Header -->
+    <div class="bg-slate-900 text-white p-8 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+      </div>
+      <button (click)="closeModal()"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors text-white z-10">
+        <lucide-icon name="x" [size]="16"></lucide-icon>
+      </button>
+      <div class="relative z-10">
+        <span
+          class="bg-amber-500/20 text-amber-500 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3 inline-block">
+          Certificate
+        </span>
+        <h3 class="text-2xl font-bold leading-tight mb-1">{{ selectedProgram.title }}</h3>
+        <p class="text-gray-400 text-sm font-light">{{ selectedProgram.description }}</p>
+      </div>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="p-8">
+      <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+        <span class="w-4 h-[1px] bg-gray-300"></span>
+        Courses
+      </h4>
+
+      <ul class="space-y-3">
+        <li *ngFor="let course of selectedProgram.courses; let idx = index"
+          class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-gray-200 transition-colors">
+          <span
+            class="w-7 h-7 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center shrink-0">
+            {{ idx + 1 }}
+          </span>
+          <span class="text-sm font-medium text-gray-700">{{ course }}</span>
+        </li>
+      </ul>
+
+      <div class="mt-6 flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+        <span class="font-bold text-primary">Duration: {{ selectedProgram.duration }}</span>
+        <span>In-Person &amp; Online</span>
+      </div>
+    </div>
+  </div>
+</div>

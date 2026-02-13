@@ -1,0 +1,56 @@
+<section
+  class="relative min-h-[calc(100vh-80px)] xl:min-h-full py-20 flex items-center justify-center overflow-hidden bg-black text-white">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-black/60 z-10"></div> <!-- Dark Overlay -->
+
+    <img src="assets/Background.jpeg" alt="Theology School Library"
+      class="w-full h-full object-cover animate-slow-zoom opacity-80" />
+  </div>
+
+  <div class="h-full m-auto p-6 relative z-20 text-center max-w-6xl mx-auto mt-10">
+
+    <div
+      class="mb-8 inline-flex items-center gap-2 px-6 py-2 rounded-full border border-white/20 bg-black/30 backdrop-blur-md animate-fade-in opacity-0 shadow-lg"
+      style="animation-delay: 0.1s;">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse ring-4 ring-emerald-400/20"></span>
+      <span class="text-xs font-bold uppercase tracking-widest text-white">Admissions Open 2026</span>
+    </div>
+
+    <h1
+      class="text-7xl md:text-9xl font-black mb-6 tracking-tighter leading-none animate-slide-up opacity-0 text-white drop-shadow-2xl"
+      style="animation-delay: 0.2s;">
+      IKDLI
+    </h1>
+
+    <h2
+      class="max-w-4xl mx-auto text-2xl md:text-4xl lg:text-5xl font-light mb-10 tracking-tight leading-tight text-gray-200 animate-slide-up opacity-0"
+      style="animation-delay: 0.3s;">
+      International Kingdom Deliverance Leadership Institute
+    </h2>
+
+    <p class="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto font-light leading-relaxed animate-slide-up opacity-0"
+      style="animation-delay: 0.4s;">
+      Cultivating a generation of leaders grounded in truth, integrity, and spiritual depth for the transformation of
+      society.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up opacity-0"
+      style="animation-delay: 0.6s;">
+      <button (click)="scrollToPrograms()"
+        class="group relative overflow-hidden bg-white text-black px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-[0_20px_50px_-12px_rgba(255,255,255,0.5)] border-2 border-white">
+        <span class="relative z-10 flex items-center gap-2">
+          Explore Programs
+          <lucide-icon name="arrow-right" [size]="16"
+            class="transition-transform group-hover:translate-x-1 text-black"></lucide-icon>
+        </span>
+      </button>
+
+      <button (click)="scrollToContact()"
+        class="px-10 py-5 rounded-full bg-transparent border-2 border-white/30 hover:bg-white/10 backdrop-blur-sm text-white font-bold text-sm tracking-widest uppercase transition-all duration-300 hover:border-white hover:scale-105">
+        Apply Now
+      </button>
+    </div>
+
+  </div>
+</section>
